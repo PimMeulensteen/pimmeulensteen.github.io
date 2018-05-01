@@ -1,0 +1,10 @@
+#name_div {
+    font-family: Archivo Narrow;
+    position: fixed;
+    color:white;
+    font-size: 4em;
+}   
+
+body {
+    margin: 0;
+}

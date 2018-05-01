@@ -1,10 +1,28 @@
 <html>
-  <head>
-    <title>Pim Meulensteen - Github</title>
-  </head>
-  <body>
-    Hallo wereld!
-    Het lijkt er op dat een <samp>readme.md</samp> bestand niet voldoende is. 
-    Deze site werkte pas toen ik een <samp>index.html </samp> maakte.
-  </body>
-</html> 
+
+<head>
+  <title>Pim Meulensteen - Github</title>
+  <link rel="stylesheet" type="text/css" href="css.css">
+
+  <meta name="description" content="Pim Meulensteen's Portfolio">
+  <meta name="keywords" content="Pim Meulensteen, HTML, CSS, Portfolio, ">
+  <meta name="author" content="Pim Meulensteen">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js"></script>
+  <script>
+    var items = ["4d.js"];
+    var script = document.createElement("script"); // Make a script DOM node 
+    script.src = items[Math.floor(Math.random() * items.length)]; // Get a random script
+    document.head.appendChild(script);  //Load script to page
+  </script>
+
+</head>
+
+<body>
+  <div id='name_div'>
+    Pim Meulensteen
+  </div>
+</body>
+
+
+</html>
