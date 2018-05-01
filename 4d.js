@@ -1,4 +1,3 @@
-var vertices_length = 80; //Length of each site of the 'cube'
 
 var rotateYZ, rotateXZ, rotateXY, rotateXW, rotateYW, rotateZW;
 var roataions = [rotateYZ, rotateXZ, rotateXY, rotateXW, rotateYW, rotateZW]
@@ -50,7 +49,7 @@ function generate_multiplication_arrays(YZ = 0, XZ = 0, XY = 0, XW = 0, YW = 0, 
     [0, 1, 0, 0],
     [-s(XZ), 0, c(XZ), 0],
     [0, 0, 0, 1]]
-    
+
   rotateXY = [
     [c(XY), -s(XY), 0, 0],
     [s(XY), c(XY), 0, 0],
@@ -124,21 +123,20 @@ function rounding(number, precision) {
 
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  createCanvas(windowWidth, windowHeight, WEBGL);
   generate_multiplication_arrays(random(0, 1), random(0, 1), -random(0, 1), -random(0, 1), -random(0, 1), random(0, 1));
-  frameRate(30);
+  frameRate(27);
+  vertices_length = min(windowWidth, windowHeight) / 4; //Length of each site of the 'cube'
 }
 
 
 function draw() {
-
   background(0);
   stroke(160);
 
-  translate(0, 0)
-  apply_multiplicaion_arrays();
+  apply_multiplicaion_arrays(); //Apply rotation
 
-  planes.forEach(function (pl) {
+  planes.forEach(function (pl) { //Draw poin
     make_plane(pl);
   });
 
