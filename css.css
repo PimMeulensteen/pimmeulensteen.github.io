@@ -3,8 +3,11 @@
     position: fixed;
     color:white;
     font-size: 4em;
+    top: 10px;
+    left: 10px;
 }   
 
-body {
+html,body {
     margin: 0;
+    height: 100%;
 }
