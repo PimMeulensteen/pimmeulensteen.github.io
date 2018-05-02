@@ -1,20 +1,22 @@
 //Setup canvas in DOM
-var helper_div = document.createElement("div");
-helper_div.style.textAlign = "center";
+var helperDiv = document.createElement("div");
+helperDiv.style.textAlign = "center";
 var canvas = document.createElement("canvas");
-var min_side = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
-helper_div.style.backgroundColor = 'black';
+var minSide = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth; //Get smallest size.
+helperDiv.style.backgroundColor = 'black';
 
+//Set style for the canvas
 canvas.style.height = window.innerHeight;
-canvas.style.width = min_side;
+canvas.style.width = minSide;
 canvas.style.margin = "0 auto";
 canvas.style.backgroundColor = 'black';
 canvas.style.marginBottom = '0';
 canvas.height = window.innerHeight;
-canvas.width = min_side;
+canvas.width = minSide;
 
-helper_div.appendChild(canvas);
-document.body.appendChild(helper_div);
+//Add elements to the DOM
+helperDiv.appendChild(canvas);
+document.body.appendChild(helperDiv);
 
 
 var smoothness = 50; //Higher = smoother animation
@@ -27,8 +29,8 @@ ctx.lineWidth = 1.2;
 ctx.strokeStyle = 'white';
 
 //100 px margin in each direction
-var xMin = min_side / 4;
-var xMax = min_side - xMin;
+var xMin = minSide / 4;
+var xMax = minSide - xMin;
 var xMid = (xMin + xMax) / 2;
 var yMin = window.innerHeight/ 8;
 var yMax = window.innerHeight - yMin;
@@ -46,7 +48,7 @@ var dy = (yMax - yMin) / nLines;
 //Make array to store data of points
 var data = []
 for (i = 0; i < nLines; i++) {
-    data.push(create_line())
+    data.push(createLine())
 }
 
 function rand(min, max) {
@@ -82,7 +84,7 @@ function normalPDF(x, mu, sigma) {
     return p_1 * p_2;
 }
 
-function create_line() {
+function createLine() {
     x = xMin;
     var line = []
 
@@ -108,21 +110,24 @@ function create_line() {
 }
 function shift() {
     data.shift()
-    data.push(create_line())
+    data.push(createLine())
 }
 
-function draw_image() {
+function drawImage() {
+    //Shift the array every "smoothness" frames, and reset framecounter
     frames = (frames + 1) % smoothness;
     if (frames == 0) {
         shift();
     }
-
+    //Make canvas black to redraw
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.strokeStyle = '#A0A0A0';
+    ctx.strokeStyle = '#A0A0A0'; //Set draw color to gray 
+
     for (var i = 0; i < nLines; i++) {
         ctx.beginPath()
         for (var j = 0; j < nPoints; j++) {
+            //First and last line don't move, while everything inbetween does.
             if (i == nLines - 1) {
                 y = -data[i][j][1] + dy * i + yMin - dy;
             } else if (i == 0) {
@@ -130,7 +135,7 @@ function draw_image() {
             } else {
                 y = -data[i][j][1] + dy * i + yMin - (frames / smoothness * dy)
             }
-
+            //Load data from array and draw line
             ctx.lineTo(data[i][j][0], y);
         }
         ctx.fill()
@@ -139,4 +144,4 @@ function draw_image() {
 }
 
 var frames = 0;
-setInterval(draw_image, 1000 / fps)
+setInterval(drawImage, 1000 / fps)
