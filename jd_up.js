@@ -15,6 +15,11 @@ canvas.width = min_side;
 helper_div.appendChild(canvas);
 document.body.appendChild(helper_div);
 
+
+var smoothness = 50; //Higher = smoother animation
+var fps = 60;
+
+
 //Setup for drawing of image
 var ctx = canvas.getContext('2d');
 ctx.lineWidth = 1.2;
@@ -31,23 +36,26 @@ var yMax = min_side - yMin;
 var nLines = 80;
 var nPoints = 100;
 
-//Make array to store data of points
-var data = []
-for(i = 0; i < nLines; i++){
-    sub_data = []
-    for(j = 0; j < nLines; j++){
-        sub_data.push(0)
-    }
-    data.push(sub_data)
-}
+
 
 //Delta's for points and line
 var dx = (xMax - xMin) / nPoints;
 var dy = (yMax - yMin) / nLines;
-function rand (min, max) {
+
+//Make array to store data of points
+var data = []
+for (i = 0; i < nLines; i++) {
+    data.push(create_line())
+}
+
+function rand(min, max) {
     return Math.random() * (max - min) + min
-  }
-  
+}
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+
 function normalRand(mu, sigma) {
     //mu = mean
     //sigma = standard deviation
@@ -73,36 +81,61 @@ function normalPDF(x, mu, sigma) {
     return p_1 * p_2;
 }
 
-function draw_image() {
-    //Start values of x and y
-    var x = xMin;
-    var y = yMin;
+function create_line() {
+    x = xMin;
+    var line = []
 
-    ctx.moveTo(x, y);
+    var nModes = randInt(1, 4) //Number of "peaks" in a line
 
-    for (var i = 0; i < nLines; i++) {
-        ctx.beginPath()
-        var mu = normalRand(xMid, 70)
-        var sigma = normalRand(50, 50)
-        for (var j = 0; j < nPoints; j++) {
-            x = x + dx;
-            point_y = y - (normalPDF(x, mu, sigma)*5000)
-            point_x = x
-            ctx.lineTo(point_x, point_y);
-            data[i][j] = [point_x, point_y]
-        }
-
-        ctx.fill()
-        ctx.stroke();
-
-        x = xMin;
-        y = y + dy;
-        ctx.moveTo(x, y);
+    var mus = []
+    var sigmas = []
+    for (var j = 0; j < nModes; j++) {
+        mus[j] = normalRand(xMid, 100)
+        sigmas[j] = normalRand(24, 30)
     }
 
-
-
+    for (var j = 0; j < nPoints; j++) {
+        x = x + dx;
+        y = 0
+        for (var l = 0; l < nModes; l++) {
+            y += normalPDF(x, mus[l], sigmas[l])
+        }
+        y = (y * 1000) + (2 * Math.random())
+        line.push([x, y])
+    }
+    return line;
+}
+function shift() {
+    data.shift()
+    data.push(create_line())
 }
 
-draw_image();
-console.log(data)
+function draw_image() {
+    frames = (frames + 1) % smoothness;
+    if (frames == 0) {
+        shift();
+    }
+
+    ctx.fillStyle = 'black'
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
+    ctx.strokeStyle = 'white';
+    for (var i = 0; i < nLines; i++) {
+        ctx.beginPath()
+        for (var j = 0; j < nPoints; j++) {
+            if (i == nLines - 1) {
+                y = -data[i][j][1] + dy * i + yMin - dy;
+            } else if (i == 0) {
+                y = -data[i][j][1] + dy * i + yMin;
+            } else {
+                y = -data[i][j][1] + dy * i + yMin - (frames / smoothness * dy)
+            }
+
+            ctx.lineTo(data[i][j][0], y);
+        }
+        ctx.fill()
+        ctx.stroke();
+    }
+}
+
+var frames = 0;
+setInterval(draw_image, 1000 / fps)
