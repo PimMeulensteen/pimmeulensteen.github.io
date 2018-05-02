@@ -118,7 +118,7 @@ function draw_image() {
 
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
-    ctx.strokeStyle = 'white';
+    ctx.strokeStyle = '#A0A0A0';
     for (var i = 0; i < nLines; i++) {
         ctx.beginPath()
         for (var j = 0; j < nPoints; j++) {
