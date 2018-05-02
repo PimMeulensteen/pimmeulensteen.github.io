@@ -5,11 +5,12 @@ var canvas = document.createElement("canvas");
 var min_side = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
 helper_div.style.backgroundColor = 'black';
 
-canvas.style.height = min_side;
+canvas.style.height = window.innerHeight;
 canvas.style.width = min_side;
 canvas.style.margin = "0 auto";
 canvas.style.backgroundColor = 'black';
-canvas.height = min_side;
+canvas.style.marginBottom = '0';
+canvas.height = window.innerHeight;
 canvas.width = min_side;
 
 helper_div.appendChild(canvas);
@@ -29,8 +30,8 @@ ctx.strokeStyle = 'white';
 var xMin = min_side / 4;
 var xMax = min_side - xMin;
 var xMid = (xMin + xMax) / 2;
-var yMin = min_side / 8;
-var yMax = min_side - yMin;
+var yMin = window.innerHeight/ 8;
+var yMax = window.innerHeight - yMin;
 
 //n of lines and points
 var nLines = 80;
