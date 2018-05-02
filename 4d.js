@@ -1,3 +1,6 @@
+var p5 = document.createElement("script")
+p5.src = "https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.js";
+document.head.appendChild(p5)
 
 var rotateYZ, rotateXZ, rotateXY, rotateXW, rotateYW, rotateZW;
 var roataions = [rotateYZ, rotateXZ, rotateXY, rotateXW, rotateYW, rotateZW]
