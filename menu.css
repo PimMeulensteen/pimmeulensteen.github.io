@@ -47,6 +47,3 @@ article:hover .front {
 article:hover .back {
     transform: rotateY(360deg);
 }
-.date {
-    color: darkgray;
-}
