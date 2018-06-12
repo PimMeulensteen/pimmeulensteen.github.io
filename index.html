@@ -5,6 +5,7 @@
 
   <title>Pim Meulensteen - Github</title>
   <link rel="stylesheet" type="text/css" href="css.css">
+  <link rel="stylesheet" type="text/css" href="menu.css">
 
   <meta name="robots" content="index,follow">
   <!-- All Search Engines -->
@@ -15,21 +16,97 @@
   <meta name="author" content="Pim Meulensteen">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script>
-    var items = ["jd_up.js","4d.js"];
-    var script = document.createElement("script"); // Make a script DOM node 
-    script.src = items[Math.floor(Math.random() * items.length)]; // Get a random script
-    document.head.appendChild(script);  //Load script to page
-
-  </script>
 </head>
 
-<body>
-  <div id="container">
-    <div id="name_div">
-      Pim Meulensteen
-    </div>
-  </div>
+<body style="background-color: black;">
+
+  <h1>
+    Pim Meulensteen
+  </h1>
+  <nav>
+    <a href="/#home">Home</a> |
+    <a href="/#items">Items</a> |
+    <a href="/#about">Over</a> |
+    <a href="/#contact">Contact</a> |
+    <input placeholder="Filter (b.v. Film)" type="search">
+  </nav>
+  <main>
+    <article onclick="location.href='/jd/'">
+      <div class="front">
+        <img src='/media/jd.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>Unkown Pleasures</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br> Nullam id rutrum arcu. Donec luctus sem et libero dictum venenatis.
+          <br> Maecenas consectetur commodo fringilla. Vivamus posuere elit mauris,
+          <br> vitae fermentum eros cursus eu. Sed mi nunc, aliquet commodo placerat et,
+      </div>
+    </article>
+
+    <article>
+      <div class="front">
+        <img src='/media/4d.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>Rotating a Hypercube</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br> Nullam id rutrum arcu. Donec luctus sem et libero dictum venenatis.
+          <br> Maecenas consectetur commodo fringilla. Vivamus posuere elit mauris,
+          <br> vitae fermentum eros cursus eu. Sed mi nunc, aliquet commodo placerat et,
+      </div>
+
+    </article>
+    <article>
+      <div class="front">
+        <img src='/media/cloud.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>From the Cloud.</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br> Nullam id rutrum arcu. Donec luctus sem et libero dictum venenatis.
+          <br> Maecenas consectetur commodo fringilla. Vivamus posuere elit mauris,
+          <br> vitae fermentum eros cursus eu. Sed mi nunc, aliquet commodo placerat et,
+      </div>
+    </article>
+    <article>
+      <div class="front">
+        <img src='/media/hg.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>Hourglass</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br> Nullam id rutrum arcu. Donec luctus sem et libero dictum venenatis.
+          <br> Maecenas consectetur commodo fringilla. Vivamus posuere elit mauris,
+          <br> vitae fermentum eros cursus eu. Sed mi nunc, aliquet commodo placerat et,
+      </div>
+    </article>
+    <article>
+      <div class="front">
+        <img src='/media/frac.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>Generating Fractals</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          <br> Nullam id rutrum arcu. Donec luctus sem et libero dictum venenatis.
+          <br> Maecenas consectetur commodo fringilla. Vivamus posuere elit mauris,
+          <br> vitae fermentum eros cursus eu. Sed mi nunc, aliquet commodo placerat et,
+      </div>
+    </article>
+    <article onclick="location.href='/dag/'">
+      <div class="front">
+        <img src='/media/dag.jpg' height="100%" width="100%">
+      </div>
+      <div class="back">
+        <h2>One-minute: Dag</h2>
+        <p class="date">8 Februari 2018</p>
+        <p>Dag is het resultaat van een filmopdracht voor het vak CKV.
+      </div>
+    </article>
+    <article>
+      <h2>Monoply Probability</h2>
+    </article>
+  </main>
   <script src="style.js"></script>
 </body>
 

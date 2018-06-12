@@ -1,14 +1,39 @@
-#container {
-    font-family: sans-serif;
-    position: absolute;
-    color:white;
-    font-size: 4em;
-    margin: 0 auto;
-    left: 0;
-    right: 0;
-}   
-
-html,body {
+html,
+body {
     margin: 0;
     height: 100%;
+    transition: transform 1s;
+}
+
+a {
+    color: darkgray;
+}
+
+
+a:hover {
+    color: white;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+body {
+    font-family: sans-serif;
+    position: absolute;
+    color: white;
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+    left: 0;
+    right: 0;
+}
+
+p {
+    color: darkgray;
 }
