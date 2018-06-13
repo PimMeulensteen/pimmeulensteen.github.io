@@ -20,8 +20,7 @@ for (i = 0; i < 10; i++) {
 
     im = document.createElement("img");
     im.setAttribute("src", "/media/" + id + ".jpg");
-    im.setAttribute("height", "100%");
-    im.setAttribute("width", "100%");
+    im.setAttribute("alt", desc);
 
     f.appendChild(im);
 
