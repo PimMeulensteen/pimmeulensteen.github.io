@@ -34,10 +34,10 @@ const items = '{"items":[ \
 	"created":"8 september 2017",\
 	"desc_short":"Projectje in Javascript om het maken van sinusgolven de illustreren."},\
 	\
-	{"id":"-",\
-	"title":"-",\
-	"created":"-",\
-	"desc_short":"-"},\
+	{"id":"shapes",\
+	"title":"Vormen in CSS",\
+	"created":"17 mei 2017",\
+	"desc_short":"Het is niet altijd makkelijk om vormen te maken in CSS. Dit zijn twee korte animaties die laten zien heo het kan."},\
 	\
 	{"id":"-",\
 	"title":"-",\
