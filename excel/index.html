@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Pim Meulensteen - Clouds</title>
+    <link rel="stylesheet" type="text/css" href="/css.css">
+    <link rel="stylesheet" type="text/css" href="dag.css">
+
+    <meta name="robots" content="index,follow">
+    <!-- All Search Engines -->
+    <meta name="google" content="notranslate">
+
+    <meta name="theme-color" content="#2e2e2e">
+    <meta name="description" content="Cloud">
+    <meta name="author" content="Pim Meulensteen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body style="background-color: black;">
+
+    <h1>
+        <a href="/">Pim Meulensteen</a>
+    </h1>
+
+    <main>
+        <h2>Afbeeldingen in Excel</h2>
+
+        <p>Excel is een van de meest toeganglijk, multifunctionele programma's. Het kan voor bijna alles gebruikt worden, en
+            zo ook het laten zien van afbeeldingen in cellen. Elke afbeeldinge bestaad uit pixels, die vervolgens weet uit
+            drie waardes bestaan tussen de 0 en 255: rood, groen en blauw. 0 is niks, zwart en 255 is zo fel mogelijk rood,
+            groen of blauw. Deze getallen kan je in een excelsheet zetten met conditionele opmaak die precies hetzelfde doet
+            als hoe een afbeelding wordt laten zien door de computer. De conditionele opmaak maak 0 zwart, en 255 zo fel
+            nogelijk. Hierdoor kan je de afbeelding zien in door alleen naar gekleurde cellen te kijken.</p>
+        <h3>Downloads</h3>
+        <ul>
+            <li>
+                <a href="/files/excel_logo.xlsx" download="excel_logo.xlsx">Excellogo</a>
+            </li>
+            <li>
+                <a href="/files/dag.xlsx" download="dag.xlsx">Afbeelding uit film
+                    <i>Dag</i>
+                </a> - Let op: zeer traag op zwakke computers.</li>
+        </ul>
+        <h3>Main.py</h3>
+        <p>
+            <a href="/files/main.py" download="excel_naar_afbeelding.py">Download</a>
+        </p>
+        <code>
+            #main.py<br>
+            #Door Pim Meulensteen.<br>
+            <br>
+            from PIL import Image<br>
+            import xlsxwriter<br>
+            <br>
+            im = Image.open('afbeelding.jpg') <br>
+            pix = im.load()<br>
+            workbook = xlsxwriter.Workbook('resultaat.xlsx')<br>
+            worksheet = workbook.add_worksheet()<br>
+            <br>
+            for x in range(im.size[1]):<br>
+            &emsp;for y in range(im.size[0]):<br>
+            &emsp;&emsp;worksheet.write(x, y*3, pix[y,x][0])<br>
+            &emsp;&emsp;worksheet.write(x, y*3+1, pix[y,x][1])<br>
+            &emsp;worksheet.write(x, y*3+2, pix[y,x][2])<br>
+            <br>
+            for y in range(im.size[1]):<br>
+            &emsp;worksheet.conditional_format(0,y*3+0,im.size[1]+4,y*3, {'type':'2_color_scale', 'min_color': "#000000",'max_color': "#FF0000"}) <br>
+            &emsp;worksheet.conditional_format(0,y*3+1,im.size[1]+4,y*3+1, {'type':'2_color_scale','min_color': "#000000",'max_color': "#00FF00"}) <br>
+            &emsp;worksheet.conditional_format(0,y*3+2,im.size[1]+4,y*3+2, {'type':'2_color_scale','min_color': "#000000",'max_color': "#0000FF"}) <br>
+            <br>
+            for x in range(im.size[0]*3):<br>
+            &emsp;worksheet.write(im.size[1]+1,x, 0)<br>
+            &emsp;worksheet.write(im.size[1]+2,x, 255)<br>
+                <br>
+            workbook.close()<br>
+
+        </code>
+    </main>
+    <footer>
+        Mail:
+        <a href="mailto:pim@meulensteen.net">pim@meulensteen.net</a> | &copy; 2018 | Github:
+        <a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
+    </footer>
+</body>
+
+</html>

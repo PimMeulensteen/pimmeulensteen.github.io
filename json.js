@@ -39,10 +39,10 @@ const items = '{"items":[ \
 	"created":"17 mei 2017",\
 	"desc_short":"Het is niet altijd makkelijk om vormen te maken in CSS. Dit zijn twee korte animaties die laten zien heo het kan."},\
 	\
-	{"id":"-",\
-	"title":"-",\
-	"created":"-",\
-	"desc_short":"-"},\
+	{"id":"excel",\
+	"title":"Afbeeldingen met Excel",\
+	"created":"15 juni 2018",\
+	"desc_short":"Met behulp van conditionele opmaak en een heel groot excel bestand kan je afbeeldingen weergeven in Excel."},\
 	\
 	{"id":"-",\
 	"title":"-",\
