@@ -15,14 +15,14 @@ for (i = 0; i < 10; i++) {
 
     article = document.createElement("article");
 
-    f = document.createElement("div");
-    f.classList = "front";
+
+    
 
     im = document.createElement("img");
     im.setAttribute("src", "/media/" + id + ".jpg");
     im.setAttribute("alt", desc);
+    im.classList = "front";
 
-    f.appendChild(im);
 
     h2 = document.createElement("h2");
     h2.innerHTML = name;
@@ -34,13 +34,13 @@ for (i = 0; i < 10; i++) {
     p = document.createElement("p");
     p.innerHTML = desc;
 
-    b = document.createElement("div");
+    b = document.createElement("section");
     b.classList = "back"
     b.appendChild(h2);
     b.appendChild(d);
     b.appendChild(p);
     article.setAttribute("onclick", "location.href='/" + id + "/'");
-    article.appendChild(f);
+    article.appendChild(im);
     article.appendChild(b);
     head.appendChild(article);
 

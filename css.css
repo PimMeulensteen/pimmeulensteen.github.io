@@ -4,6 +4,7 @@ body {
     height: 100%;
     transition: transform 1s;
 }
+
 img {
     height: 100%;
     width: 100%;
@@ -13,17 +14,22 @@ a {
     color: darkgray;
 }
 
-
 a:hover {
     color: white;
 }
 
-nav a {
+h1 a {
     text-decoration: none;
+    color: white;
+    margin: 0;
 }
 
+h1 {
+    margin: 20px 0;
+    text-align: center;
+}
 
-nav a:hover {
+h1 a:hover {
     text-decoration: underline;
 }
 
@@ -41,6 +47,13 @@ body {
 p {
     color: darkgray;
 }
+
 .date {
     color: darkgray;
+}
+
+footer {
+    text-align: center;
+    color: darkgray;
+    margin: 20px auto;
 }
