@@ -31,6 +31,7 @@ h2 {
     height: 100%;
     transition: transform 1s;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;   /* Bedankt, apple! */
     border-color: gray;
     border-width: 1px;
     border-style: solid;
