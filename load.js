@@ -39,7 +39,7 @@ for (i = 0; i < 10; i++) {
     b.appendChild(h2);
     b.appendChild(d);
     b.appendChild(p);
-    article.setAttribute("onclick", "location.href='/" + id + "/'");
+    b.setAttribute("onclick", "location.href='/" + id + "/'");
     article.appendChild(im);
     article.appendChild(b);
     head.appendChild(article);
