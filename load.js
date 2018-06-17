@@ -12,7 +12,7 @@ for (i = 0; i < l; i++) {
     var article = document.createElement("article");
 
     var im = document.createElement("img");
-    im.setAttribute("src", "/media/" + id + ".jpg");
+    im.setAttribute("src", "/media/" + id + "." + obj.items[i].format);
     im.setAttribute("alt", desc);
     im.classList = "front";
 
