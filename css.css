@@ -10,17 +10,21 @@ img {
     width: 100%;
 }
 
-a {
+a,
+footer,
+p,
+.date {
     color: darkgray;
 }
 
-a:hover {
+a:hover,
+h1 a,
+body {
     color: white;
 }
 
 h1 a {
     text-decoration: none;
-    color: white;
     margin: 0;
 }
 
@@ -36,7 +40,6 @@ h1 a:hover {
 body {
     font-family: sans-serif;
     position: absolute;
-    color: white;
     margin: 0 auto;
     max-width: 1200px;
     width: 100%;
@@ -44,16 +47,7 @@ body {
     right: 0;
 }
 
-p {
-    color: darkgray;
-}
-
-.date {
-    color: darkgray;
-}
-
 footer {
     text-align: center;
-    color: darkgray;
     margin: 20px auto;
 }

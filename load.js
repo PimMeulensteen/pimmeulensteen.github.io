@@ -1,40 +1,32 @@
-let obj = JSON.parse(items);
+var obj = JSON.parse(items);
 
-let head = document.getElementsByTagName("main")[0];
-
-
-let l = obj.items.length;
-
-for (i = 0; i < 10; i++) {
-    console.log(i);
-    
-    id = obj.items[i].id;
-    name = obj.items[i].title;
-    date = obj.items[i].created;
-    desc = obj.items[i].desc_short;
-
-    article = document.createElement("article");
+var head = document.getElementsByTagName("main")[0];
 
 
-    
+var l = obj.items.length;
 
-    im = document.createElement("img");
+for (i = 0; i < l; i++) {
+    var id = obj.items[i].id;
+    var desc = obj.items[i].desc_short;
+
+    var article = document.createElement("article");
+
+    var im = document.createElement("img");
     im.setAttribute("src", "/media/" + id + ".jpg");
     im.setAttribute("alt", desc);
     im.classList = "front";
 
+    var h2 = document.createElement("h2");
+    h2.innerHTML = obj.items[i].title;
 
-    h2 = document.createElement("h2");
-    h2.innerHTML = name;
-
-    d = document.createElement("p");
-    d.innerHTML = date;
+    var d = document.createElement("p");
+    d.innerHTML = obj.items[i].created;
     d.classList = "date";
 
-    p = document.createElement("p");
+    var p = document.createElement("p");
     p.innerHTML = desc;
 
-    b = document.createElement("section");
+    var b = document.createElement("section");
     b.classList = "back"
     b.appendChild(h2);
     b.appendChild(d);
@@ -43,5 +35,4 @@ for (i = 0; i < 10; i++) {
     article.appendChild(im);
     article.appendChild(b);
     head.appendChild(article);
-
 }
