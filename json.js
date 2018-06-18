@@ -8,13 +8,13 @@ const items = '{"items":[ \
 	{"id":"jd",\
 	"title":"Unkown Pleasures",\
 	"created":"2 mei 2018",\
-	"format":"jpg",\
+	"format":"png",\
 	"desc_short":"Animatie van de albumcover van Joy Divisions Unkonw Pleasures."},\
 	\
 	{"id":"4d",\
 	"title":"Roteren van een Tesseract ",\
 	"created":"1 mei 2018",\
-	"format":"jpg",\
+	"format":"png",\
 	"desc_short":"Een tesseract (een hyperkubus in de 4e dimensie) ziet er interssant uit wanneer deze woordt gedraaid. Gemaakt in Javascript"},\
 	\
 	{"id":"cloud",\
@@ -38,7 +38,7 @@ const items = '{"items":[ \
 	{"id":"sin",\
 	"title":"Maken van een sinusgolf",\
 	"created":"8 september 2017",\
-	"format":"jpg",\
+	"format":"png",\
 	"desc_short":"Projectje in Javascript om het maken van sinusgolven de illustreren."},\
 	\
 	{"id":"shapes",\
@@ -50,7 +50,7 @@ const items = '{"items":[ \
 	{"id":"excel",\
 	"title":"Afbeeldingen met Excel",\
 	"created":"15 juni 2018",\
-	"format":"jpg",\
+	"format":"png",\
 	"desc_short":"Met behulp van conditionele opmaak en een heel groot excel bestand kan je afbeeldingen weergeven in Excel."}\
 	]\
 }'
