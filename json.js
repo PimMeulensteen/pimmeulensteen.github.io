@@ -53,4 +53,5 @@ const items = '{"items":[ \
 	"format":"png",\
 	"desc_short":"Met behulp van conditionele opmaak en een heel groot excel bestand kan je afbeeldingen weergeven in Excel."}\
 	]\
-}'
+}';
+load()
