@@ -41,6 +41,12 @@ const obj = JSON.parse('{"items":[ \
 	"format":"png",\
 	"desc_short":"Projectje in Javascript om het maken van sinusgolven de illustreren."},\
 	\
+	{"id":"voice",\
+	"title":"Analyze van de Voice",\
+	"created":"8 september 2017",\
+	"format":"jpg",\
+	"desc_short":"Een project voor <i>ICT in de wolken</i> met behulp van twitterdata een winnaar van <i>The Voice</i> te voorspellen."},\
+	\
 	{"id":"shapes",\
 	"title":"Vormen in CSS",\
 	"created":"17 mei 2017",\
