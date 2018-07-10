@@ -61,40 +61,54 @@ const obj = JSON.parse('{"items":[ \
 	]\
 }')
 
-var head = document.getElementsByTagName("main")[0];
+const head = document.getElementsByTagName("main")[0]; 
 
+const l = obj.items.length;
 
-var l = obj.items.length;
+//Loop die alle items uit het JSON-object op de pagina plaatst.
+for (let i = 0; i < l; i++) {
 
+	let id = obj.items[i].id;
+	let desc = obj.items[i].desc_short;
 
-for (i = 0; i < l; i++) {
-	var id = obj.items[i].id;
-	var desc = obj.items[i].desc_short;
+	//Maak een artcile element
+	let article = document.createElement("article");
 
-	var article = document.createElement("article");
-
-	var im = document.createElement("img");
+	//Maak een afbeelding met attributen.
+	let im = document.createElement("img");
 	im.setAttribute("src", "/media/" + id + "." + obj.items[i].format);
 	im.setAttribute("alt", desc);
 	im.classList = "front";
 
-	var h2 = document.createElement("h2");
+	//Maak een h2 element en vul deze
+	let h2 = document.createElement("h2");
 	h2.innerHTML = obj.items[i].title;
 
-	var d = document.createElement("p");
+	//Maak een p element, vul deze met de datumen geef de class 'date'
+	let d = document.createElement("p");
 	d.innerHTML = obj.items[i].created;
 	d.classList = "date";
 
-	var p = document.createElement("p");
+	//Maak een p element en vul deze met de bescrhrijving
+	let p = document.createElement("p");
 	p.innerHTML = desc;
 
-	var b = document.createElement("section");
+	//Maak een section element en geeft deze de class back
+	let b = document.createElement("section");
 	b.classList = "back"
+
+	//Plaats de losse elementen in het section-element
 	b.appendChild(h2);
 	b.appendChild(d);
 	b.appendChild(p);
+
+	//Maak het section-element klinkbaar.
 	b.setAttribute("onclick", "location.href='/" + id + "/'");
+
+	//Plaats de afbeeling en de section in het article.
 	article.appendChild(im);
 	article.appendChild(b);
+	
+	//Plaats het article op de pagina
 	head.appendChild(article);
 }
