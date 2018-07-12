@@ -73,6 +73,9 @@ function load(i){
 	let im = document.createElement("img");
 	im.setAttribute("src", "/media/" + id + "." + obj.items[i].format);
 	im.setAttribute("alt", desc);
+
+	//Als de afb. geladen is, vehoog de teller van geladen afbeeldingen met een 
+	//en run de check 'lc()'
 	im.addEventListener("load",function(event){ic++;lc()});
 	im.classList = "front";
 
