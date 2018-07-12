@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Pim Meulensteen - Fractals</title>
+    <style>
+        html,
+        body,
+        a {
+            background-color: #000;
+            transition: transform 1s;
+            color: #fff
+        }
+
+        img,
+        .front,
+        .back {
+            height: 100%;
+            width: 100%
+        }
+
+        p,
+        .date {
+            color: #a9a9a9
+        }
+
+        h1 a,
+        html,
+        body,
+        a {
+            margin: 0
+        }
+
+        h1 a {
+            text-decoration: none
+        }
+
+        h1 {
+            margin: 20px 0;
+            text-align: center
+        }
+
+        h1 a:hover {
+            text-decoration: underline
+        }
+
+        body,
+        main,
+        header {
+            max-width: 1200px
+        }
+
+        body {
+            font-family: sans-serif;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px auto
+        }
+    </style>
+
+    <meta name="robots" content="index,follow">
+    <!-- All Search Engines -->
+    <meta name="google" content="notranslate">
+
+    <meta name="theme-color" content="#2e2e2e">
+    <meta name="description" content="Cloud">
+    <meta name="author" content="Pim Meulensteen">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="/favicon/favicon.ico">
+    <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="196x196" href="/favicon/favicon-192.png">
+    <link rel="icon" type="image/png" sizes="160x160" href="/favicon/favicon-160.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="/favicon/favicon-64.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16.png">
+    <link rel="apple-touch-icon" href="/favicon/favicon-57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/favicon/favicon-114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/favicon/favicon-72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/favicon/favicon-144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/favicon/favicon-60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/favicon/favicon-120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/favicon/favicon-76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/favicon/favicon-152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/favicon-180.png">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="/favicon/favicon-144.png">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+</head>
+
+<body style="background-color: black;">
+
+    <h1>
+        <a href="/">Pim Meulensteen</a>
+    </h1>
+
+    <main>
+        <h2>Het Sierpinski-vierkant</h2>
+
+        <p></p>
+        <h3>Downloads</h3>
+        <ul>
+            <li>
+                <a href="/files/Sierpinski.png" download="6gen-sierpinski.png">Sierpinski-vierkant (6e generatie, 2187x2187)</a>
+            </li>
+        </ul>
+        <h3>Main.py</h3>
+        <p>
+            <a href="/files/sierpinski.py" download="sierpinski.py">Download</a>
+        </p>
+        <code>
+            <br>import numpy as np
+            <br>from PIL import Image
+            <br>
+            <br>
+            <br>MAX_RANGE = 1024 #Amount of pixels
+            <br>GENERATION = 5 #N of generations
+            <br>
+            <br>
+            <br>interval = []
+            <br>
+            <br>def generate():
+            <br>
+            <br>&emsp;for i in range(1,GENERATION+1):
+            <br>&emsp;#For each generation
+            <br>
+            <br>&emsp;&emsp;sub_interval = []
+            <br>
+            <br>&emsp;&emsp;#Algorithm to check whether or not a x,y-value belongs to a certain generation.
+            <br>&emsp;&emsp;for j in range(0,(3**(i-1))):
+            <br>&emsp;&emsp;&emsp;for n in range(int((3*j+1)*MAX_RANGE/(3**i)),int((3*j+2)*MAX_RANGE/(3**i))):
+            <br>&emsp;&emsp;&emsp;&emsp;sub_interval.append(n)
+            <br>
+            <br>&emsp;interval.append(set(sub_interval)) #Use a set to dramatically increase lookup time
+            <br>
+            <br>
+            <br>&emsp;my_array = []
+            <br>
+            <br>&emsp;for a in range(0,MAX_RANGE):
+            <br>&emsp;&emsp;#a is the x-coord
+            <br>&emsp;&emsp;my_sub_array = []
+            <br>&emsp;&emsp;for b in range(0,MAX_RANGE):
+            <br>&emsp;&emsp;&emsp;#b is they-coord
+            <br>&emsp;&emsp;&emsp;to_fill = 1 #Make all squares white by default
+            <br>&emsp;&emsp;&emsp;for g in range(0,GENERATION): #if a in interval[g] and b in interval[g]:
+            <br>&emsp;&emsp;&emsp;&emsp;to_fill = 0
+            <br>&emsp;&emsp;&emsp;&emsp;#if the a,b-coord belongs to ANY generation, make it black.
+            <br>&emsp;&emsp;&emsp;my_sub_array.append(to_fill)
+            <br>&emsp;my_array.append(my_sub_array)
+            <br>
+            <br>&emsp;my_array = np.array(my_array) #Make the array into a numpy array.
+            <br>
+            <br>&emsp;im = Image.fromarray(my_array.reshape((MAX_RANGE,MAX_RANGE)).astype('uint8')*255) #Make np.array to an actual
+            image.0
+            <br>
+            <br> im.save("res/aa1.png")
+            <br>
+            <br>
+            <br>generate()
+            <br>
+            <br>
+
+        </code>
+    </main>
+    <footer>
+        Mail:
+        <a href="mailto:pim@meulensteen.net">pim@meulensteen.net</a> | &copy; 2018 | Github:
+        <a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
+    </footer>
+</body>
+
+</html>
