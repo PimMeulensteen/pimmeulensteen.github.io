@@ -22,6 +22,7 @@
     h1{margin:20px 0;text-align:center}
     a:hover{border-bottom-color:#fff;}
     body,main,header{max-width:1200px}
+    header{height:80px}
     body{font-family:sans-serif;position:absolute;margin:0 auto;left:0;right:0}
     footer{text-align:center;margin:20px auto}
     main,header{display:flex;flex-wrap:wrap;align-content:stretch;margin:0 auto;width:100%;flex-direction:row;justify-content:center;align-items:center}
@@ -54,6 +55,14 @@
   </footer>
 
 </body>
-<script async src="json.js"></script>
+<script>
+  //Variable die het aantal 'cards' boven de vouw betekent
+  //Neem de minimale waarde van: 4 (max aantal cards) en (WIDTH - SCROLLBAR)/BREEDTE_KAART (aantal kaarten dat past)
+  //Neem het aantal kaarten dat past in de hoogte door (HEIGHT - HEADER_HEIGHT)/HOOGTE_KAART
+  //Doe dit dan keer elkaar. 
+  let q = Math.min(4,Math.floor((window.innerWidth - 17)/300)) * (Math.ceil((window.innerHeight - 80)/300))
+</script>
+<script src="json.js"></script>
+
 
 </html>

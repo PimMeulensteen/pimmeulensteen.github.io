@@ -61,13 +61,8 @@ const obj = JSON.parse('{"items":[ \
 	]\
 }')
 
-const head = document.getElementsByTagName("main")[0]; 
 
-const l = obj.items.length;
-
-//Loop die alle items uit het JSON-object op de pagina plaatst.
-for (let i = 0; i < l; i++) {
-
+function load(i){
 	let id = obj.items[i].id;
 	let desc = obj.items[i].desc_short;
 
@@ -78,6 +73,7 @@ for (let i = 0; i < l; i++) {
 	let im = document.createElement("img");
 	im.setAttribute("src", "/media/" + id + "." + obj.items[i].format);
 	im.setAttribute("alt", desc);
+	im.addEventListener("load",function(event){ic++;lc()});
 	im.classList = "front";
 
 	//Maak een h2 element en vul deze
@@ -111,4 +107,24 @@ for (let i = 0; i < l; i++) {
 	
 	//Plaats het article op de pagina
 	head.appendChild(article);
+	return true;
+}
+
+function lc(){
+	//Deze functie evaluuert of alle afbeeldingen die moeten laden geladen zijn.
+	if (ic==q){
+		//Als dit het geval is, laad de rest van de afbeeldingen
+		for (let i = 3; i < l; i++) {
+			load(i)
+		}
+	}
+}
+
+const head = document.getElementsByTagName("main")[0]; 
+let ic = 0; //Varibalie die het aantal geladen afbeeldinge bijhoudt.
+const l = obj.items.length;
+
+//Loop die alle items uit het JSON-object op de pagina plaatst.
+for (let i = 0; i < q; i++) {
+	load(i)	
 }
