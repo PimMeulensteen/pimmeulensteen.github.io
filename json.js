@@ -43,7 +43,7 @@ const obj = JSON.parse('{"items":[ \
 	\
 	{"id":"voice",\
 	"title":"Analyze van de Voice",\
-	"created":"8 september 2017",\
+	"created":"21 februari 2018",\
 	"format":"jpg",\
 	"desc_short":"Een project voor <i>ICT in de wolken</i> met behulp van twitterdata een winnaar van <i>The Voice</i> te voorspellen."},\
 	\
