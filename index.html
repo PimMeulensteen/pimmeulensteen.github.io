@@ -15,17 +15,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     html,body,a,.front,.back{background-color:#000;color:#fff;transition:1s;}
-    img,.front,.back{height:100%;width:100%}
-    p,.date{color:#a9a9a9}
+    img,.front,.back,main,header{height:100%;width:100%}
+    p,.date{color:#aaa}
     h1 a,html,body,a{margin:0}
     a{text-decoration:none;border-bottom: 1px solid #777;transition:.2s;}
-    h1{margin:20px 0;text-align:center}
+    
     a:hover{border-bottom-color:#fff;}
     body,main,header{max-width:1200px}
     header{height:80px}
     body{font-family:sans-serif;position:absolute;margin:0 auto;left:0;right:0}
-    footer{text-align:center;margin:20px auto}
-    main,header{display:flex;flex-wrap:wrap;align-content:stretch;margin:0 auto;width:100%;flex-direction:row;justify-content:center;align-items:center}
+    h1,footer{margin:20px 0;text-align:center}
+    main,header{display:flex;flex-wrap:wrap;align-content:stretch;flex-direction:row;justify-content:center;align-items:center}
     article{margin:10px;width:280px;height:280px;position:relative;perspective:30rem}
     p,h2{margin:20px}
 
@@ -49,20 +49,17 @@
   <main>
   </main>
   <footer>
-    Mail:
-    <a href="mailto:pim@meulensteen.net">pim@meulensteen.net</a> | &copy; 2018 | Github:
-    <a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
+    Mail:&nbsp;<a href="mailto:pim@meulensteen.net">pim@meulensteen.net</a> |&nbsp;&copy;&nbsp;2018&nbsp;| Github:&nbsp;<a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
   </footer>
-
+  <script>
+    //Variable die het aantal 'cards' boven de vouw betekent
+    //Neem de minimale waarde van: 4 (max aantal cards) en (WIDTH - SCROLLBAR)/BREEDTE_KAART (aantal kaarten dat past)
+    //Neem het aantal kaarten dat past in de hoogte door (HEIGHT - HEADER_HEIGHT)/HOOGTE_KAART
+    //Doe dit dan keer elkaar. 
+    let q = Math.min(4,Math.floor((window.innerWidth - 17)/300)) * (Math.ceil((window.innerHeight - 80)/300))
+  </script>
+  <script src="json.js"></script>
 </body>
-<script>
-  //Variable die het aantal 'cards' boven de vouw betekent
-  //Neem de minimale waarde van: 4 (max aantal cards) en (WIDTH - SCROLLBAR)/BREEDTE_KAART (aantal kaarten dat past)
-  //Neem het aantal kaarten dat past in de hoogte door (HEIGHT - HEADER_HEIGHT)/HOOGTE_KAART
-  //Doe dit dan keer elkaar. 
-  let q = Math.min(4,Math.floor((window.innerWidth - 17)/300)) * (Math.ceil((window.innerHeight - 80)/300))
-</script>
-<script src="json.js"></script>
 
 
 </html>
