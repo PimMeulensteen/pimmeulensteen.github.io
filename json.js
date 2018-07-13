@@ -77,7 +77,7 @@ function load(i){
 	//Als de afb. geladen is, vehoog de teller van geladen afbeeldingen met een 
 	//en run de check 'lc()'
 	im.addEventListener("load",function(event){ic++;lc()});
-	im.classList = "front";
+	im.setAttribute("class","front");
 
 	//Maak een h2 element en vul deze
 	let h2 = document.createElement("h2");
@@ -86,7 +86,7 @@ function load(i){
 	//Maak een p element, vul deze met de datumen geef de class 'date'
 	let d = document.createElement("p");
 	d.innerHTML = obj.items[i].created;
-	d.classList = "date";
+	d.setAttribute("class","date");
 
 	//Maak een p element en vul deze met de bescrhrijving
 	let p = document.createElement("p");
@@ -94,7 +94,7 @@ function load(i){
 
 	//Maak een section element en geeft deze de class back
 	let b = document.createElement("section");
-	b.classList = "back"
+	b.setAttribute("class","back");
 
 	//Plaats de losse elementen in het section-element
 	b.appendChild(h2);
