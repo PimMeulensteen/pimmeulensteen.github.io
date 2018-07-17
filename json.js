@@ -50,7 +50,7 @@ const obj = JSON.parse('{"items":[ \
 	{"id":"shapes",\
 	"title":"Vormen in CSS",\
 	"created":"17 mei 2017",\
-	"format":"png",\
+	"format":"svg",\
 	"desc_short":"Het is niet altijd makkelijk om vormen te maken in CSS. Dit zijn twee korte animaties die laten zien heo het kan."},\
 	\
 	{"id":"excel",\
@@ -62,7 +62,7 @@ const obj = JSON.parse('{"items":[ \
 }')
 
 
-function load(i){
+function load(i) {
 	let id = obj.items[i].id;
 	let desc = obj.items[i].desc_short;
 
@@ -76,8 +76,11 @@ function load(i){
 
 	//Als de afb. geladen is, vehoog de teller van geladen afbeeldingen met een 
 	//en run de check 'lc()'
-	im.addEventListener("load",function(event){ic++;lc()});
-	im.setAttribute("class","front");
+	im.addEventListener("load", function (event) {
+		ic++;
+		lc()
+	});
+	im.setAttribute("class", "front");
 
 	//Maak een h2 element en vul deze
 	let h2 = document.createElement("h2");
@@ -86,7 +89,7 @@ function load(i){
 	//Maak een p element, vul deze met de datumen geef de class 'date'
 	let d = document.createElement("p");
 	d.innerHTML = obj.items[i].created;
-	d.setAttribute("class","date");
+	d.setAttribute("class", "date");
 
 	//Maak een p element en vul deze met de bescrhrijving
 	let p = document.createElement("p");
@@ -94,7 +97,7 @@ function load(i){
 
 	//Maak een section element en geeft deze de class back
 	let b = document.createElement("section");
-	b.setAttribute("class","back");
+	b.setAttribute("class", "back");
 
 	//Plaats de losse elementen in het section-element
 	b.appendChild(h2);
@@ -107,27 +110,27 @@ function load(i){
 	//Plaats de afbeeling en de section in het article.
 	article.appendChild(im);
 	article.appendChild(b);
-	
+
 	//Plaats het article op de pagina
 	head.appendChild(article);
 	return true;
 }
 
-function lc(){
+function lc() {
 	//Deze functie evaluuert of alle afbeeldingen die moeten laden geladen zijn.
-	if (ic==q){
+	if (ic == q) {
 		//Als dit het geval is, laad de rest van de afbeeldingen
-		for (let i = 3; i < l; i++) {
+		for (let i = q; i < l; i++) {
 			load(i)
 		}
 	}
 }
 
-const head = document.getElementsByTagName("main")[0]; 
+const head = document.getElementsByTagName("main")[0];
 let ic = 0; //Varibalie die het aantal geladen afbeeldinge bijhoudt.
 const l = obj.items.length;
 
 //Loop die alle items uit het JSON-object op de pagina plaatst.
 for (let i = 0; i < q; i++) {
-	load(i)	
+	load(i)
 }
