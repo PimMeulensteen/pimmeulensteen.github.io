@@ -14,7 +14,7 @@ const obj = JSON.parse('{"items":[ \
 	{"id":"4d",\
 	"title":"Roteren van een Tesseract ",\
 	"created":"1 mei 2018",\
-	"format":"png",\
+	"format":"svg",\
 	"desc_short":"Een tesseract (een hyperkubus in de 4e dimensie) ziet er interssant uit wanneer deze woordt gedraaid. Gemaakt in Javascript"},\
 	\
 	{"id":"cloud",\

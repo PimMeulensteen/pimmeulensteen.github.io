@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="1" height="1">
+<style>polygon,polyline {fill: none;stroke:#A0A0A0;stroke-width:0.005}
+</style>
+<polygon points=".348,.12 .83,.234 .853,.281 .5,.193" />
+<polygon points=".348,.12 .211,.316 .138,.691 .259,.514" />
+<polygon points=".348,.12 .259,.514 .421,.507 .5,.193" />
+<polygon points=".348,.12 .83,.234 .625,.452 .212,.316" />
+<polygon points=".314,.648 .421,.507 .259,.514 .138,.691" />
+<polygon points=".314,.648 .421,.507 .5,.193 .38,.345" />
+<polygon points=".314,.648 .138,.691 .212,.316 .38,.345" />
+<polygon points=".314,.648 .655,.793 .714,.457 .38,.345" />
+<polygon points=".314,.648 .138,.691 .541,.89 .655,.793" />
+<polygon points=".79,.643 .853,.281 .5,.193 .421,.507" />
+<polygon points=".79,.643 .655,.793 .314,.648 .421,.507" />
+<polygon points=".79,.643 .72,.7 .541,.89 .655,.793" />
+<polygon points=".625,.452 .541,.89 .72,.7 .83,.234" />
+<polyline points=".625,.452 .714,.457 .853,.281" />
+</svg>
