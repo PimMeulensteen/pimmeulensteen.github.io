@@ -1,0 +1,18 @@
+html {
+    background-color: black;
+    font-size: 40px;
+    font-family: monospace;
+    color: white;
+}
+#outer{
+    position: relative;
+    overflow: hidden;
+    height: 120px;
+}
+#hl {
+    font-size: 120px;
+}
+main {
+    overflow: hidden;
+    position: absolute;
+}
