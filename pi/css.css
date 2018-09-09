@@ -1,21 +1,7 @@
-html {
-    background-color: black;
-    font-size: 40px;
-    font-family: monospace;
-    color: white;
-}
-#outer{
-    position: relative;
-    overflow: hidden;
-    height: 120px;
-}
-#hl {
-    font-size: 120px;
-}
-main {
-    overflow: hidden;
-    position: absolute;
-}
-#one_char {
-    color: black;
-}
+html,body,a,b{background-color:#000;color:#fff;font-size: 40px;font-family: monospace;}
+h1{margin:20px 0;text-align:center}
+a{text-decoration:none;border-bottom: 1px solid #777;transition:.4s;font-family:sans-serif;}
+a:hover{border-color:white;}
+#focus{font-size: 120px;}
+main {overflow: hidden;position: absolute;}
+#one_char {color: black;}

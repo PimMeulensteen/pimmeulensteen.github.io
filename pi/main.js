@@ -2,7 +2,7 @@ function read() {
     if(index == max) {
         index = 0
     }
-    main_el.innerHTML ="<span id='one_char'>3</span>"+ pi.slice(0,index) + "<span id='hl'>" + pi.charAt(index) + "</span>" + pi.slice(index+1,-1) 
+    main_el.innerHTML ="<span id='one_char'>3</span>"+ pi.slice(0,index) + "<span id='focus'>" + pi.charAt(index) + "</span>" + pi.slice(index+1,-1) 
     one_char_width = document.getElementById("one_char").offsetWidth;
     main_el.style.left = -(one_char_width) * (index - 4)+ "px"
     charToRead = pi.charAt(index)
