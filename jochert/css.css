@@ -16,3 +16,6 @@ main {
     overflow: hidden;
     position: absolute;
 }
+#one_char {
+    color: black;
+}
