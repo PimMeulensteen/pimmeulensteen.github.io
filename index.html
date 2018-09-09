@@ -30,14 +30,12 @@
     article{margin:10px;width:280px;height:280px;position:relative;perspective:30rem}
     p,h2{margin:20px}
 
-    .front,.back{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-color:gray;border-width:1px;border-style:solid;background-color:#000;transform-style:preserve-3d;}
+    .front,.back{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-color:gray;border-width:1px;border-style:solid;background-color:#000;transform-style:preserve-3d}
     .back{transform:rotateY(180deg);cursor:pointer}
     article:hover .front{transform:rotateY(180deg)}
     article:hover .back{transform:rotateY(360deg)}
 
-    @media only screen and (max-width: 619px) {
-    article{width:80vw;height:80vw;margin:10vw 5vw} 
-    }
+    @media only screen and (max-width: 619px) {article{width:80vw;height:80vw;margin:10vw 5vw}}
   </style>
 </head>
 
