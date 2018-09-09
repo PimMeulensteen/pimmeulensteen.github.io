@@ -17,6 +17,12 @@ const obj = JSON.parse('{"items":[ \
 	"format":"svg",\
 	"desc_short":"Een tesseract (een hyperkubus in de 4e dimensie) ziet er interssant uit wanneer deze woordt gedraaid. Gemaakt in Javascript"},\
 	\
+	{"id":"pi",\
+	"title":"Jochem die Pi voorlees ",\
+	"created":"5 september 2018",\
+	"format":"svg",\
+	"desc_short":"Jochem die 1 000 000 getallen van Pi voorlees. Gemaakt van 11 losse audiobestanden."},\
+	\
 	{"id":"cloud",\
 	"title":"Cloudservice",\
 	"created":"25 mei 2017",\
