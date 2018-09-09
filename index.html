@@ -19,7 +19,7 @@
     img,.front,.back,main,header{height:100%;width:100%}
     p{color:#aaa}
     html,a{margin:0}
-    a{text-decoration:none;border-bottom: 1px solid #777}
+    a{text-decoration:none;border-bottom:1px solid #777}
     
     a:hover{border-bottom-color:#fff;}
     body,main,header{max-width:1200px}
@@ -30,7 +30,7 @@
     article{margin:10px;width:280px;height:280px;position:relative;perspective:30rem}
     p,h2{margin:20px}
 
-    .front,.back{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-color:gray;border-width:1px;border-style:solid;background-color:#000}
+    .front,.back{position:absolute;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-color:gray;border-width:1px;border-style:solid;background-color:#000;transform-style:preserve-3d;}
     .back{transform:rotateY(180deg);cursor:pointer}
     article:hover .front{transform:rotateY(180deg)}
     article:hover .back{transform:rotateY(360deg)}
