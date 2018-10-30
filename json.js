@@ -83,12 +83,14 @@ function load(i) {
 
 	//Maak een afbeelding met attributen.
 	let im = document.createElement("img");
-	if(window.innerWidth < 620){
+	if (window.innerWidth < 620) {
 		im.setAttribute("src", "/media_big/" + id + "." + obj.items[i].format);
-	} else{
-		im.setAttribute("src", "/media_normal/" + id + "." + obj.items[i].format);
+
+	} else {
+		im.setAttribute("src", "/media_nor/" + id + "." + obj.items[i].format);
+
 	}
-	
+	last_size = window.innerWidth
 	im.setAttribute("alt", desc);
 
 	//Als de afb. geladen is, vehoog de teller van geladen afbeeldingen met een 
@@ -151,3 +153,27 @@ const l = obj.items.length;
 for (let i = 0; i < q; i++) {
 	load(i)
 }
+
+window.addEventListener("resize", function () {
+	console.log("changed window size to: " + window.innerWidth)
+	if ((last_size <= 620 && window.innerWidth > 620) || (last_size >= 620 && window.innerWidth < 620)) {
+		console.log("change!")
+		let articles = document.getElementsByTagName("article")
+		if (window.innerWidth < 620) {
+			for (n = 0; n < articles.length; n++) {
+				current_src = articles[n].childNodes[0].getAttribute("src").slice(11, articles[n].childNodes[0].getAttribute("src").length)
+				console.log(current_src);
+				articles[n].childNodes[0].setAttribute("src", "/media_big/" + current_src)
+
+			}
+
+		} else {
+			for (n = 0; n < articles.length; n++) {
+				current_src = articles[n].childNodes[0].getAttribute("src").slice(11, articles[n].childNodes[0].getAttribute("src").length)
+				console.log(current_src);
+				articles[n].childNodes[0].setAttribute("src", "/media_nor/" + current_src)
+			}
+		}
+		last_size = window.innerWidth
+	}
+})
