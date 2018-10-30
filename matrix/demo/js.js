@@ -7,7 +7,7 @@ const set_canvas_size = function () {
     c.height = window.innerHeight
     c.width = window.innerWidth
     x_l = Math.floor(window.innerWidth / 30)
-    y_l = Math.ceil(window.innerHeight / 30)
+    y_l = Math.ceil(window.innerHeight / 30) + 1
 }
 
 const clear_canvas = function () {
