@@ -4,7 +4,13 @@ const obj = JSON.parse('{"items":[ \
 	"created":"8 februari 2018",\
 	"format":"jpg",\
 	"desc_short":"Dag is het resultaat van een filmopdracht voor het vak CKV"},\
-\
+	\
+	{"id":"matrix",\
+	"title":"Matrix",\
+	"created":"30 oktober 2018",\
+	"format":"png",\
+	"desc_short":"Animatie van <i>the matrix</i> met behulp van een HTML5 canvas en javascript."},\
+	\
 	{"id":"jd",\
 	"title":"Unkown Pleasures",\
 	"created":"2 mei 2018",\

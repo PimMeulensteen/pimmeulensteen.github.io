@@ -1,32 +1,41 @@
+const GRADIENT_LENGTH = 10
+
 let c = document.getElementById('cnvs')
 let ctx = c.getContext('2d')
 
-c.height = window.innerHeight;
-c.width = window.innerWidth;;
+const set_canvas_size = function () {
+    c.height = window.innerHeight
+    c.width = window.innerWidth
+    x_l = Math.floor(window.innerWidth / 30)
+    y_l = Math.ceil(window.innerHeight / 30)
+}
 
 const clear_canvas = function () {
     ctx.fillStyle = 'black'
     ctx.fillRect(0, 0, c.width, c.height)
 }
-let GRADIENT_LENGTH = 10
+
 const write_text = function (text, x, index) {
+    if (index > 0) {
+        let green_level = 0
+        string = text.split("")
 
-    let g = 0
-    ctx.font = "30px monospace";
+        ctx.font = "30px monospace";
+        ctx.fillStyle = "white"
 
-    string = text.split("")
-    ctx.fillStyle = "white"
-    for (n = 0; n < index; n++) {
-        if (index - GRADIENT_LENGTH < n) {
-            g += 255 / (GRADIENT_LENGTH-1);
-        } else {
-            g = 0
-        }   
-        ctx.fillStyle = "rgb(0," + g + ",0)"
-        ctx.fillText(string[n], x, 30 * (n));
+        for (n = 0; n < index; n++) {
+            if (index - GRADIENT_LENGTH < n) {
+                green_level += 255 / (GRADIENT_LENGTH - 1);
+            } else {
+                green_level = 0
+            }
+            ctx.fillStyle = "rgb(0," + green_level + ",0)"
+            ctx.fillText(string[n], x, 30 * (n));
+        }
+        ctx.fillStyle = "white"
+        ctx.fillText(string[index], x, 30 * (n));
     }
-    ctx.fillStyle = "white"
-    ctx.fillText(string[index], x, 30 * (n));
+
 }
 
 const randStr = function (len) {
@@ -35,18 +44,28 @@ const randStr = function (len) {
     return s;
 }
 
-x_l = Math.ceil(window.innerWidth / 30)
-y_l = Math.ceil(window.innerHeight / 30)
-
-let randoms = new Array(x_l)
-let indexes = new Array(x_l)
-
-for (i = 0; i < x_l; i++) {
-    randoms[i] = randStr(y_l)
-    indexes[i] = 0
+const init_index_array = function () {
+    let indexes = new Array(x_l)
+    for (i = 0; i < x_l; i++) {
+        indexes[i] = 0
+    }
+    return indexes
 }
 
+const init_random_array = function () {
+    let randoms = new Array(x_l)
+    for (i = 0; i < x_l; i++) {
+        randoms[i] = randStr(y_l)
+    }
+    return randoms
+}
+
+set_canvas_size()
+let indexes = init_index_array()
+let randoms = init_random_array()
+
 setInterval(function () {
+    clear_canvas()
     random_numner = Math.floor(Math.random() * x_l)
     if (indexes[random_numner] == 0) {
         indexes[random_numner] = 1
@@ -61,9 +80,16 @@ setInterval(function () {
             indexes[z] = 0
             randoms[z] = randStr(y_l)
         }
+
     }
 
 
 }, 100)
 
+window.addEventListener("resize", function () {
+    clear_canvas()
+    set_canvas_size()
+    indexes = init_index_array()
+    randoms = init_random_array()
 
+})
