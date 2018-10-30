@@ -70,7 +70,6 @@ setInterval(function () {
     if (indexes[random_numner] == 0) {
         indexes[random_numner] = 1
     }
-
     for (z = 0; z < x_l; z++) {
         if (indexes[z] > 0) {
             indexes[z]++;
@@ -80,10 +79,7 @@ setInterval(function () {
             indexes[z] = 0
             randoms[z] = randStr(y_l)
         }
-
     }
-
-
 }, 100)
 
 window.addEventListener("resize", function () {

@@ -83,7 +83,12 @@ function load(i) {
 
 	//Maak een afbeelding met attributen.
 	let im = document.createElement("img");
-	im.setAttribute("src", "/media/" + id + "." + obj.items[i].format);
+	if(window.innerWidth < 620){
+		im.setAttribute("src", "/media_big/" + id + "." + obj.items[i].format);
+	} else{
+		im.setAttribute("src", "/media_normal/" + id + "." + obj.items[i].format);
+	}
+	
 	im.setAttribute("alt", desc);
 
 	//Als de afb. geladen is, vehoog de teller van geladen afbeeldingen met een 
