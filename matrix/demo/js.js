@@ -15,7 +15,7 @@ const set_canvas_size = function () {
     }
 
     //definier hoeveel karakters er op het scherm passen.
-    n_char_in_x = Math.ceil(canvas.width / FONT_SIZE)
+    n_char_in_x = Math.floor(canvas.width / FONT_SIZE)
     n_char_in_y = Math.ceil(canvas.height / FONT_SIZE) + 2
     ctx.font = FONT_SIZE + "px monospace";
 }
@@ -67,10 +67,10 @@ const init_random_array = function (len, random_array_length) {
 }
 //Reset als de windowsize veranderd
 window.addEventListener("resize", function () {
-    clear_canvas()
     set_canvas_size()
-    indexes = init_index_array()
-    randoms = init_random_array()
+    indexes = init_index_array(n_char_in_x)
+    randoms = init_random_array(n_char_in_x, n_char_in_y)
+
 })
 
 //INIT
@@ -80,6 +80,7 @@ let randoms = init_random_array(n_char_in_x, n_char_in_y)
 
 //LOOP
 setInterval(function () { //Elke 150ms doe:
+
     clear_canvas() //Maak de canvas geheel zwart
     random_numner = Math.floor(Math.random() * n_char_in_x) //Kies een random kollomen
 
@@ -87,12 +88,12 @@ setInterval(function () { //Elke 150ms doe:
     if (indexes[random_numner] == 0) {
         indexes[random_numner] = 1
     }
-    
+
     //Loop over alle kolomen
     for (z = 0; z < n_char_in_x; z++) {
         //Als de positie van het witte blokje niet nul is
         if (indexes[z] > 0) {
-           
+
             write_text(randoms[z], z, indexes[z]) //teken de kolom
             indexes[z]++; //Verhoog positie van het witte blokje met een 
         }
@@ -104,5 +105,5 @@ setInterval(function () { //Elke 150ms doe:
             randoms[z] = random_arary(n_char_in_y)
         }
     }
-}, 150)
+}, 125)
 
