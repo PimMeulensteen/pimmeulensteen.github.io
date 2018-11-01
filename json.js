@@ -159,12 +159,12 @@ let articles = document.getElementsByTagName("article")
 window.addEventListener("resize", function () {
 	//Als het scherm groter of kleiner is geworden dan het breakpoint
 	if ((last_size <= 620 && window.innerWidth > 620) || (last_size >= 620 && window.innerWidth < 620)) {
+		last_size = window.innerWidth
 		//Als kleiner dan het breakpoint
 		if (window.innerWidth < 620) {
 			//Verander alle src images naar de goede grote
 			for (n = 0; n < articles.length; n++) {
 				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
-				console.log(current_src);
 				articles[n].firstChild.setAttribute("src", "/media_big/" + current_src)
 			}
 		} //Als NIET kleiner dan het breakpoint
@@ -172,10 +172,9 @@ window.addEventListener("resize", function () {
 			//Verander alle src images naar de goede grote
 			for (n = 0; n < articles.length; n++) {
 				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
-				console.log(current_src);
 				articles[n].firstChild.setAttribute("src", "/media_nor/" + current_src)
 			}
 		}
-		last_size = window.innerWidth //helper variable voor groter/kleiner worden
+		 //helper variable voor groter/kleiner worden
 	}
 })

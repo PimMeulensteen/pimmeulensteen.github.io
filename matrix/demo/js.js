@@ -1,94 +1,108 @@
+//Constants
 const GRADIENT_LENGTH = 10
 const FONT_SIZE = 30
-let c = document.getElementById('cnvs')
-let ctx = c.getContext('2d')
+
+//Krijg canvas en zet context
+let canvas = document.getElementById('cnvs')
+let ctx = canvas.getContext('2d')
 
 const set_canvas_size = function () {
+    //Als de index.html in een map 'demo' zit,
+    //Dan maakt de canvas zo groot mogelijk
     if (window.location.href.split("/").slice(-2)[0] == "demo") {
-        c.width = window.innerWidth
-        c.height = window.innerHeight
+        canvas.width = window.innerWidth
+        canvas.height = window.innerHeight
     }
-    x_l = Math.ceil(c.width / FONT_SIZE)
-    y_l = Math.ceil(c.height / FONT_SIZE) + 2
 
+    //definier hoeveel karakters er op het scherm passen.
+    n_char_in_x = Math.ceil(canvas.width / FONT_SIZE)
+    n_char_in_y = Math.ceil(canvas.height / FONT_SIZE) + 2
     ctx.font = FONT_SIZE + "px monospace";
 }
 
 const clear_canvas = function () {
+    //Maak de gehele canvas zwart
     ctx.fillStyle = 'black'
-    ctx.fillRect(0, 0, c.width, c.height)
+    ctx.fillRect(0, 0, canvas.width, canvas.height)
 }
 
 const write_text = function (text, x, index) {
-    if (index > 0) {
-        let green_level = 0
-        string = text.split("")
-        ctx.fillStyle = "white"
-        for (n = 0; n < index - 1; n++) {
-            if (index - GRADIENT_LENGTH < n) {
-                green_level += 255 / (GRADIENT_LENGTH - 1);
-            } else {
-                green_level = 0
-            }
-            ctx.fillStyle = "rgb(0," + green_level + ",0)"
-            ctx.fillText(string[n], x, FONT_SIZE * n);
-        }
-        ctx.fillStyle = "white"
-        ctx.fillText(string[index], x, FONT_SIZE * n);
+    let green_level = 0
+    for (n = index - GRADIENT_LENGTH; n < index - 1; n++) {
+        //Maak een gradient van groen naar zwart
+        green_level += 255 / (GRADIENT_LENGTH);
+        //Zet dit als text kleur en teken het karakter
+        ctx.fillStyle = "rgb(0," + green_level + ",0)"
+        ctx.fillText(text[n], x * FONT_SIZE, n * FONT_SIZE);
     }
+    //Kleur het karakter met index 'index' wit
+    ctx.fillStyle = "white"
+    ctx.fillText(text[index], x * FONT_SIZE, n * FONT_SIZE);
 }
 
-const rand_str = function (len) {
-
-    let s = '';
-    while (len--) s += String.fromCodePoint(Math.floor(Math.random() * (126 - 33) + 33));
+const random_arary = function (len) {
+    //Return een array van lengte 'len' met random karakters
+    let s = [];
+    while (len--) s.push(String.fromCodePoint(Math.floor(Math.random() * (126 - 33) + 33)))
     return s;
 }
 
-const init_index_array = function () {
-    let indexes = new Array(x_l)
-    for (i = 0; i < x_l; i++) {
+const init_index_array = function (len) {
+    //Return een array gevuld met nullen met lengte 'len'
+    let indexes = new Array(len)
+    for (i = 0; i < len; i++) {
         indexes[i] = 0
     }
     return indexes
 }
 
-const init_random_array = function () {
-    let randoms = new Array(x_l)
-    for (i = 0; i < x_l; i++) {
-        randoms[i] = rand_str(y_l)
+const init_random_array = function (len, random_array_length) {
+    //Maak een array gevuld met nullen met lengte 'len'
+    //en vul deze array met "random_array_length" random karkaters
+    let randoms = new Array(len)
+    for (i = 0; i < len; i++) {
+        randoms[i] = random_arary(random_array_length)
     }
     return randoms
 }
-
-set_canvas_size()
-let indexes = init_index_array()
-let randoms = init_random_array()
-
-
-
-setInterval(function () {
-    clear_canvas()
-    random_numner = Math.floor(Math.random() * x_l)
-    if (indexes[random_numner] == 0) {
-        indexes[random_numner] = 1
-    }
-    for (z = 0; z < x_l; z++) {
-        if (indexes[z] > 0) {
-            indexes[z]++;
-        }
-
-        write_text(randoms[z], z * 30, indexes[z])
-        if (indexes[z] > y_l + GRADIENT_LENGTH) {
-            indexes[z] = 0
-            randoms[z] = rand_str(y_l)
-        }
-    }
-}, 150)
-
+//Reset als de windowsize veranderd
 window.addEventListener("resize", function () {
     clear_canvas()
     set_canvas_size()
     indexes = init_index_array()
     randoms = init_random_array()
 })
+
+//INIT
+set_canvas_size()
+let indexes = init_index_array(n_char_in_x)
+let randoms = init_random_array(n_char_in_x, n_char_in_y)
+
+//LOOP
+setInterval(function () { //Elke 150ms doe:
+    clear_canvas() //Maak de canvas geheel zwart
+    random_numner = Math.floor(Math.random() * n_char_in_x) //Kies een random kollomen
+
+    //Als deze kollomen nog niet is gestard (dus 0 is), start deze door deze op een te zetten
+    if (indexes[random_numner] == 0) {
+        indexes[random_numner] = 1
+    }
+    
+    //Loop over alle kolomen
+    for (z = 0; z < n_char_in_x; z++) {
+        //Als de positie van het witte blokje niet nul is
+        if (indexes[z] > 0) {
+           
+            write_text(randoms[z], z, indexes[z]) //teken de kolom
+            indexes[z]++; //Verhoog positie van het witte blokje met een 
+        }
+
+        if (indexes[z] > n_char_in_y + GRADIENT_LENGTH) {
+            //ALS de "drop" geheel uit het beeld is
+            //DAN wordt deze gereset
+            indexes[z] = 0
+            randoms[z] = random_arary(n_char_in_y)
+        }
+    }
+}, 150)
+
