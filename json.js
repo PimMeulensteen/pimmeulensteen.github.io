@@ -1,15 +1,15 @@
 const obj = JSON.parse('{"items":[ \
-	{"id":"dag",\
-	"title":"One-minute: Dag",\
-	"created":"8 februari 2018",\
-	"format":"jpg",\
-	"desc_short":"Dag is het resultaat van een filmopdracht voor het vak CKV"},\
-	\
 	{"id":"matrix",\
 	"title":"Matrix",\
 	"created":"30 oktober 2018",\
 	"format":"png",\
 	"desc_short":"Animatie van <i>the matrix</i> met behulp van een HTML5 canvas en javascript."},\
+	\
+	{"id":"dag",\
+	"title":"One-minute: Dag",\
+	"created":"8 februari 2018",\
+	"format":"jpg",\
+	"desc_short":"Dag is het resultaat van een filmopdracht voor het vak CKV"},\
 	\
 	{"id":"jd",\
 	"title":"Unkown Pleasures",\
@@ -154,26 +154,28 @@ for (let i = 0; i < q; i++) {
 	load(i)
 }
 
+//Code die naar de event window resize luistert.
+let articles = document.getElementsByTagName("article")
 window.addEventListener("resize", function () {
-	console.log("changed window size to: " + window.innerWidth)
+	//Als het scherm groter of kleiner is geworden dan het breakpoint
 	if ((last_size <= 620 && window.innerWidth > 620) || (last_size >= 620 && window.innerWidth < 620)) {
-		console.log("change!")
-		let articles = document.getElementsByTagName("article")
+		//Als kleiner dan het breakpoint
 		if (window.innerWidth < 620) {
+			//Verander alle src images naar de goede grote
 			for (n = 0; n < articles.length; n++) {
-				current_src = articles[n].childNodes[0].getAttribute("src").slice(11, articles[n].childNodes[0].getAttribute("src").length)
+				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
 				console.log(current_src);
-				articles[n].childNodes[0].setAttribute("src", "/media_big/" + current_src)
-
+				articles[n].firstChild.setAttribute("src", "/media_big/" + current_src)
 			}
-
-		} else {
+		} //Als NIET kleiner dan het breakpoint
+		else {
+			//Verander alle src images naar de goede grote
 			for (n = 0; n < articles.length; n++) {
-				current_src = articles[n].childNodes[0].getAttribute("src").slice(11, articles[n].childNodes[0].getAttribute("src").length)
+				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
 				console.log(current_src);
-				articles[n].childNodes[0].setAttribute("src", "/media_nor/" + current_src)
+				articles[n].firstChild.setAttribute("src", "/media_nor/" + current_src)
 			}
 		}
-		last_size = window.innerWidth
+		last_size = window.innerWidth //helper variable voor groter/kleiner worden
 	}
 })
