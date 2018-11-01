@@ -1,11 +1,17 @@
 const GRADIENT_LENGTH = 10
-const FONT_SIZE = 20
+const FONT_SIZE = 30
 let c = document.getElementById('cnvs')
 let ctx = c.getContext('2d')
 
 const set_canvas_size = function () {
-    x_l = Math.floor(c.height / 30)
-    y_l = Math.ceil(c.width / 30) + 2
+    if (window.location.href.split("/").slice(-2)[0] == "demo") {
+        c.width = window.innerWidth
+        c.height = window.innerHeight
+    }
+    x_l = Math.ceil(c.width / FONT_SIZE)
+    y_l = Math.ceil(c.height / FONT_SIZE) + 2
+
+    ctx.font = FONT_SIZE + "px monospace";
 }
 
 const clear_canvas = function () {
@@ -33,7 +39,7 @@ const write_text = function (text, x, index) {
 }
 
 const rand_str = function (len) {
-    
+
     let s = '';
     while (len--) s += String.fromCodePoint(Math.floor(Math.random() * (126 - 33) + 33));
     return s;
@@ -59,9 +65,9 @@ set_canvas_size()
 let indexes = init_index_array()
 let randoms = init_random_array()
 
-ctx.font = FONT_SIZE + "px monospace";
 
-setInterval(function () {    
+
+setInterval(function () {
     clear_canvas()
     random_numner = Math.floor(Math.random() * x_l)
     if (indexes[random_numner] == 0) {
@@ -71,19 +77,18 @@ setInterval(function () {
         if (indexes[z] > 0) {
             indexes[z]++;
         }
-        
+
         write_text(randoms[z], z * 30, indexes[z])
         if (indexes[z] > y_l + GRADIENT_LENGTH) {
             indexes[z] = 0
             randoms[z] = rand_str(y_l)
         }
     }
-}, 100)
+}, 150)
 
 window.addEventListener("resize", function () {
     clear_canvas()
     set_canvas_size()
     indexes = init_index_array()
     randoms = init_random_array()
-
 })
