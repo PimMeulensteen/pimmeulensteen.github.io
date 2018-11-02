@@ -2,3 +2,7 @@
 .vscode/tasks.json
 
 media/dag-oud.jpg
+*.min.html
+*.min.js
+*.min.css
+
