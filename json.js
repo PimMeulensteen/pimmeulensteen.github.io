@@ -5,6 +5,12 @@ const obj = JSON.parse('{"items":[ \
 	"format":"png",\
 	"desc_short":"Animatie van <i>the matrix</i> met behulp van een HTML5 canvas en javascript."},\
 	\
+	{"id":"3d",\
+	"title":"3D effecten",\
+	"created":"2 november 2018",\
+	"format":"png",\
+	"desc_short":"3D roterende text met behulp van CSS animaties."},\
+	\
 	{"id":"dag",\
 	"title":"One-minute: Dag",\
 	"created":"8 februari 2018",\

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PM - 3D text</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+
+</head>
+
+<body>
+    <h1>
+        <a href="/">Pim Meulensteen</a>
+    </h1>
+    <main>
+        <h2>3D tekst animatie in 2d</h2>
+        <p class="date">Gemaakt op: 2 november 2018</p>
+        <figure>
+
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3>3D effecten in CSS. (klik om te bewerken)</h3>
+            <h3 contenteditable="true" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                oninput="f()">3D effecten in CSS. (klik om te bewerken)</h3>
+
+        </figure>
+    </main>
+    <footer>
+        Mail:
+        <a href="mailto:pim@meulensteen.net">pim@meulensteen.net</a> | &copy; 2018 | Github:
+        <a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
+    </footer>
+
+</body>
+<script>
+    function f() {
+        elems = document.getElementsByTagName('h3')
+
+
+        for (let n = 0; n < elems.length - 1; n++) {
+            elems[n].innerHTML = elems[elems.length - 1].innerHTML
+        }
+    }
+
+</script>
+
+</html>
