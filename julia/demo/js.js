@@ -119,7 +119,7 @@ document.addEventListener("keydown", function (event) {
         main()
     }
     else if (key == 40) {
-        im.y_offset = im.y_offset - (0.25 * canvas.height)
+        im.y_offset = im.y_offset + (0.25 * canvas.height)
         main()
     }
 
