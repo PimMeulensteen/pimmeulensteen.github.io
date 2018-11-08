@@ -42,38 +42,55 @@ class Image {
         this.y_max = canvas.height + this.y_offset
         this.x_max = canvas.width + this.x_offset
         this.max = 1.5 / this.zoom
+        this.intensity = []
     }
 
     generate_array() {
         this.array = []
         this.intensity = []
 
-        for (let i = this.x_offset; i < this.x_max; i++) {
+        for (let i = 0; i < canvas.width; i++) {
             this.array[i] = []
             this.intensity[i] = []
 
-            let Re = ((canvas.width / 2) - i) / (canvas.width / 2) * this.max
-            for (let j = this.y_offset; j < this.y_max; j++) {
-                let im = (((this.y_max / 2) - j) / (canvas.width / 2)) * this.max
+            let k = i + this.x_offset
+            let Re = ((this.x_max / 2) - k) / (canvas.width / 2) * this.max
+
+            for (let j = 0; j < canvas.height; j++) {
+
+                let m = j + this.y_offset
+                let im = (((this.y_max / 2) - m) / (canvas.height / 2)) * this.max
+
                 this.array[i][j] = new Complex(Re, im)
             }
         }
     }
     calculate() {
-        for (let i = this.x_offset; i < this.x_max; i++) {
-            for (let j = this.y_offset; j < this.y_max; j++) {
+        for (let i = 0; i < canvas.width; i++) {
+            for (let j = 0; j < canvas.height; j++) {
                 const r = algorithm(this.array[i][j], ITERATIONS, 2)
-                this.intensity[i][j] = gradient[Math.floor(r % 50)]
+                this.intensity.push(gradient[Math.floor(r % 50)])
             }
         }
     }
     draw() {
-        for (let i = this.x_offset; i < this.x_max; i++) {
-            for (let j = this.y_offset; j < this.y_max; j++) {
-                ctx.fillStyle = this.intensity[i][j]
-                ctx.fillRect(i - this.x_offset, j - this.y_offset, 1, 1)
-            }
+        let imgData = ctx.createImageData(canvas.width, canvas.width);
+        var i;
+        for (i = 0; i < this.intensity.length; i++) {
+            let a = this.intensity[i]
+            imgData.data[i * 4] = parseInt("0x" + a[1] + a[2])
+            imgData.data[i * 4 + 1] = parseInt("0x" + a[3] + a[4]);
+            imgData.data[i * 4 + 2] = parseInt("0x" + a[5] + a[6]);
+            imgData.data[i * 4 + 3] = 255;
         }
+
+        ctx.putImageData(imgData, 10, 10);
+        // for (let i = this.x_offset; i < this.x_max; i++) {
+        //     for (let j = this.y_offset; j < this.y_max; j++) {
+        //         ctx.fillStyle = this.intensity[i][j]
+        //         ctx.fillRect(i - this.x_offset, j - this.y_offset, 1, 1)
+        //     }
+        // }
     }
 
 
@@ -106,19 +123,19 @@ document.addEventListener("wheel", async function (event) {
 })
 document.addEventListener("keydown", function (event) {
     let key = event.keyCode
-    if (key == 37) {
+    if (key == 38) {
         im.x_offset = im.x_offset - (0.25 * canvas.width)
         main()
     }
-    else if (key == 38) {
+    else if (key == 37) {
         im.y_offset = im.y_offset - (0.25 * canvas.height)
         main()
     }
-    else if (key == 39) {
+    else if (key == 40) {
         im.x_offset = im.x_offset + (0.25 * canvas.width)
         main()
     }
-    else if (key == 40) {
+    else if (key == 39  ) {
         im.y_offset = im.y_offset + (0.25 * canvas.height)
         main()
     }
@@ -130,3 +147,4 @@ document.addEventListener("keydown", function (event) {
 let gradient = ["#FF0000", "#EB0013", "#D80027", "#C5003A", "#B1004E", "#9E0062", "#8B0075", "#770089", "#64009C", "#5100B0", "#3D00C4", "#2A00D7", "#1700EB", "#0400FF", "#1814E9", "#2D29D4", "#423DBF", "#5752AA", "#6C6694", "#817B7F", "#96906A", "#ABA455", "#C0B93F", "#D5CD2A", "#EAE215", "#FFF700", "#F3E215", "#E7CD2A", "#DCB93F", "#D0A455", "#C4906A", "#B97B7F", "#AD6694", "#A152AA", "#963DBF", "#8A29D4", "#7E14E9", "#7300FF", "#7E00E9", "#8A00D4", "#9600BF", "#A100AA", "#AD0094", "#B9007F", "#C4006A", "#D00055", "#DC003F", "#E7002A", "#F30015", "#FF0000"]
 
 main(1, 0, 0)
+
