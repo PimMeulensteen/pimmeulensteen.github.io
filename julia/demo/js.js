@@ -39,9 +39,10 @@ class Image {
 
     }
     update_values() {
+        //
         this.y_max = canvas.height + this.y_offset
         this.x_max = canvas.width + this.x_offset
-        this.max = 1.5 / this.zoom
+        this.zoom_factor = 1 / this.zoom
         this.intensity = []
     }
 
@@ -54,20 +55,21 @@ class Image {
             this.intensity[i] = []
 
             let k = i + this.x_offset
-            let Re = ((this.x_max / 2) - k) / (canvas.width / 2) * this.max
+            let Re = ((this.x_max / 2) - k) / (canvas.width / 2)
 
             for (let j = 0; j < canvas.height; j++) {
 
                 let m = j + this.y_offset
-                let im = (((this.y_max / 2) - m) / (canvas.height / 2)) * this.max
+                let im = (((this.y_max / 2) - m) / (canvas.height / 2))
 
-                this.array[i][j] = new Complex(Re, im)
+                this.array[i][j] = new Complex(Re * this.zoom_factor, im * this.zoom_factor)
             }
         }
     }
+
     calculate() {
         for (let i = 0; i < canvas.width; i++) {
-            for (let j = 0; j < canvas.height; j++) {
+            for (let j = 0; j < canvas.width; j++) {
                 const r = algorithm(this.array[i][j], ITERATIONS, 2)
                 this.intensity.push(gradient[Math.floor(r % 50)])
             }
@@ -114,11 +116,13 @@ const main = function () {
 const CONSTANT = new Complex(-0.7, -0.4)
 const ITERATIONS = 250
 let zoom = 1
-im = new Image(1, 0, 0);
+im = new Image(1, 0.5, 0);
 
 document.addEventListener("wheel", async function (event) {
     let delta = Math.sign(event.deltaY)
     im.zoom = im.zoom - (im.zoom * 0.5 * delta)
+    im.x_offset = im.x_offset - (im.x_offset * 0.5 * delta)
+    im.y_offset = im.y_offset - (im.y_offset * 0.5 * delta)
     setTimeout(main(), 100)
 })
 document.addEventListener("keydown", function (event) {
@@ -135,7 +139,7 @@ document.addEventListener("keydown", function (event) {
         im.x_offset = im.x_offset + (0.25 * canvas.width)
         main()
     }
-    else if (key == 39  ) {
+    else if (key == 39) {
         im.y_offset = im.y_offset + (0.25 * canvas.height)
         main()
     }
@@ -146,5 +150,5 @@ document.addEventListener("keydown", function (event) {
 
 let gradient = ["#FF0000", "#EB0013", "#D80027", "#C5003A", "#B1004E", "#9E0062", "#8B0075", "#770089", "#64009C", "#5100B0", "#3D00C4", "#2A00D7", "#1700EB", "#0400FF", "#1814E9", "#2D29D4", "#423DBF", "#5752AA", "#6C6694", "#817B7F", "#96906A", "#ABA455", "#C0B93F", "#D5CD2A", "#EAE215", "#FFF700", "#F3E215", "#E7CD2A", "#DCB93F", "#D0A455", "#C4906A", "#B97B7F", "#AD6694", "#A152AA", "#963DBF", "#8A29D4", "#7E14E9", "#7300FF", "#7E00E9", "#8A00D4", "#9600BF", "#A100AA", "#AD0094", "#B9007F", "#C4006A", "#D00055", "#DC003F", "#E7002A", "#F30015", "#FF0000"]
 
-main(1, 0, 0)
+main(1, 0.5, 0)
 
