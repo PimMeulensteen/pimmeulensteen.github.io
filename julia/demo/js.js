@@ -8,27 +8,14 @@ let ctx = canvas.getContext('2d')
 
 
 const algorithm = function (z, its, z_max) {
-    let i = its
-    while (z.length() <= z_max && i >= 0) {
-        z = z.func(CONSTANT)
-        i = i - 1
+    z_max = z_max ** 2
+    while (z[0] * z[0] + z[1] * z[1] <= z_max && its >= 0) {
+        z = [z[0] ** 2 - z[1] ** 2 + CONSTANT[0], z[1] * z[0] * 2 + CONSTANT[1]]
+        its = its - 1
     }
-    return i
+    return its
 }
 
-class Complex {
-    constructor(real, imag) {
-        this.imag = imag
-        this.real = real
-    }
-    func(a) {
-        return new Complex(this.real ** 2 - this.imag ** 2 + a.real, this.imag * this.real * 2 + a.imag)
-    }
-    length() {
-        return Math.sqrt(this.imag * this.imag + this.real * this.real)
-    }
-
-}
 
 class Image {
     constructor(s, x, y) {
@@ -39,7 +26,6 @@ class Image {
 
     }
     update_values() {
-        //
         this.y_max = canvas.height + this.y_offset
         this.x_max = canvas.width + this.x_offset
         this.zoom_factor = 1 / this.zoom
@@ -51,18 +37,11 @@ class Image {
         this.intensity = []
 
         for (let i = 0; i < canvas.width; i++) {
+            let Re = ((this.x_max / 2) - (i + this.x_offset)) / (canvas.width / 2) * this.zoom_factor
             this.array[i] = []
-            this.intensity[i] = []
-
-            let k = i + this.x_offset
-            let Re = ((this.x_max / 2) - k) / (canvas.width / 2)
-
             for (let j = 0; j < canvas.height; j++) {
-
-                let m = j + this.y_offset
-                let im = (((this.y_max / 2) - m) / (canvas.height / 2))
-
-                this.array[i][j] = new Complex(Re * this.zoom_factor, im * this.zoom_factor)
+                let Im = (((this.y_max / 2) - (j + this.y_offset)) / (canvas.height / 2)) * this.zoom_factor
+                this.array[i][j] = [Re, Im]
             }
         }
     }
@@ -87,12 +66,6 @@ class Image {
         }
 
         ctx.putImageData(imgData, 10, 10);
-        // for (let i = this.x_offset; i < this.x_max; i++) {
-        //     for (let j = this.y_offset; j < this.y_max; j++) {
-        //         ctx.fillStyle = this.intensity[i][j]
-        //         ctx.fillRect(i - this.x_offset, j - this.y_offset, 1, 1)
-        //     }
-        // }
     }
 
 
@@ -106,14 +79,13 @@ const main = function () {
     im.update_values()
     im.generate_array()
     im.calculate()
-    let t1 = performance.now();
-    console.log("Call to all the code but draw took " + (t1 - t0) + " milliseconds.")
+
     im.draw()
-    let t2 = performance.now();
-    console.log("Call to draw took " + (t2 - t1) + " milliseconds.")
+    let t1 = performance.now();
+    console.log(t1 - t0)
 }
 
-const CONSTANT = new Complex(-0.7, -0.4)
+const CONSTANT = [-0.7, -0.4]
 const ITERATIONS = 250
 let zoom = 1
 im = new Image(1, 0.5, 0);
