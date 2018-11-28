@@ -14,16 +14,59 @@
     <meta name="author" content="Pim Meulensteen">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="favicon.png">
-    <style>        
-        html,body,a,b{background-color:#000;color:#fff}
-        p{color:#a9a9a9}
-        a,html,body{margin:0}
-        a{text-decoration:none;border-bottom: 1px solid #777;transition:.4s;}
-        a:hover{border-color:white;}
-        h1{margin:20px 0;text-align:center}
-        body{max-width:60ch;font-family:sans-serif;position:absolute;margin:0 auto;left:0;right:0;padding:0 10px}
-        footer{text-align:center;margin:20px auto}
-        #main{text-align: center;width: 100%}
+    <style>
+        html,
+        body,
+        a,
+        b {
+            background-color: #000;
+            color: #fff
+        }
+
+        p {
+            color: #a9a9a9
+        }
+
+        a,
+        html,
+        body {
+            margin: 0
+        }
+
+        a {
+            text-decoration: none;
+            border-bottom: 1px solid #777;
+            transition: .4s;
+        }
+
+        a:hover {
+            border-color: white;
+        }
+
+        h1 {
+            margin: 20px 0;
+            text-align: center
+        }
+
+        body {
+            max-width: 60ch;
+            font-family: sans-serif;
+            position: absolute;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            padding: 0 10px
+        }
+
+        footer {
+            text-align: center;
+            margin: 20px auto
+        }
+
+        #main {
+            text-align: center;
+            width: 100%
+        }
     </style>
 </head>
 
@@ -35,10 +78,12 @@
     <main>
         <h2>Animatie van Unkown Pleasures</h2>
         <p class="date">Gemaakt op: 8 Februari 2018</p>
-        <a href='/jd/demo/'>Demo.</a>
+        <canvas id='cnvs' height="400" width="1000"></canvas>
+        <a href='/jd/demo/'>Demo in fullscreen</a>
         <p>
             <i>Joy Division</i>'s
-            <i>Unkonw Pleasures</i> heeft naar mijn mening een van de mooiste - of ten minste interessantste - albumcovers.
+            <i>Unkonw Pleasures</i> heeft naar mijn mening een van de mooiste - of ten minste interessantste -
+            albumcovers.
         </p>
     </main>
     <footer>
@@ -47,6 +92,8 @@
         <a href="https://github.com/PimMeulensteen">/PimMeulensteen</a>
     </footer>
 </body>
+<script>let canvas = document.getElementById('cnvs'); let minSide = 400</script>
+<script src="demo/jd_up.js"></script>
 
 
 </html>
