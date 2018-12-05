@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+	<style>
+		img {
+			height: 60vh
+		}
+	</style>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>Kibble Balans</h1>
+			</section>
+			<section>
+				<section>
+					<h2>
+						Kilogram
+					</h2>
+				</section>
+				<section>
+					<h4>Oude defenitie</h4>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Prototype_kilogram_replica.JPG">
+				</section>
+				<section>
+					<h4>Porblemen</h4>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Prototype_mass_drifts.jpg">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h3>Stroombalans</h3>
+				</section>
+				<section>Bryan Kibble 1938-2016</section>
+				<section>
+					<h4>Defenitie van de Kilogram</h4>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/NIST-4_Kibble_balance.jpg">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>Mijn Uitvoering </h2>
+					<ul>
+							<li class="fragment">Profielwerkstuk</li>
+							<li class="fragment">Doel: 0.1 tot 1% nauwkeurigheid</li>
+							<li class="fragment">Arduino</li>
+						  </ul>
+				</section>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
