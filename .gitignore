@@ -1,8 +1,6 @@
-.vscode/launch.json
-.vscode/tasks.json
 
-media/dag-oud.jpg
-*.min.html
-*.min.js
-*.min.css
-
+julia/demo/index.min.html
+wb/index.html
+julia/demo/js.min.js
+json.min.js
+wb/index.html
