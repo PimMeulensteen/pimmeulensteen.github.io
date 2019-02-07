@@ -1,4 +1,9 @@
 const obj = JSON.parse('{"items":[ \
+	{"id":"lissajous",\
+	"title":"Lissajous",\
+	"created":"7 februari 2019",\
+	"format":"png",\
+	"desc_short":"Animatie van Lissajoustranformaties met p5.js"},\
 	{"id":"matrix",\
 	"title":"Matrix",\
 	"created":"30 oktober 2018",\
