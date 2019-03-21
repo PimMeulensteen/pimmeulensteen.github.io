@@ -94,13 +94,18 @@ function load(i) {
 
 	//Maak een afbeelding met attributen.
 	let im = document.createElement("img");
-	if (window.innerWidth < 620) {
-		im.setAttribute("src", "/media_big/" + id + "." + obj.items[i].format);
+	let image_name =  id + "." + obj.items[i].format;
+	im.style.width = '100%';
+	im.style.height = '100%';
+	im.setAttribute("srcset", 
+	"media_nor/" + image_name + ' 280w, ' +
+	"media_big/" + image_name + ' 560w');
+	im.setAttribute("sizes", "(min-width: 620px) 280px, 560px")
+	im.setAttribute("src", "media_nor/" + image_name);
 
-	} else {
-		im.setAttribute("src", "/media_nor/" + id + "." + obj.items[i].format);
 
-	}
+	
+
 	last_size = window.innerWidth
 	im.setAttribute("alt", desc);
 
@@ -164,28 +169,3 @@ const l = obj.items.length;
 for (let i = 0; i < q; i++) {
 	load(i)
 }
-
-//Code die naar de event window resize luistert.
-let articles = document.getElementsByTagName("article")
-window.addEventListener("resize", function () {
-	//Als het scherm groter of kleiner is geworden dan het breakpoint
-	if ((last_size <= 620 && window.innerWidth > 620) || (last_size >= 620 && window.innerWidth < 620)) {
-		last_size = window.innerWidth
-		//Als kleiner dan het breakpoint
-		if (window.innerWidth < 620) {
-			//Verander alle src images naar de goede grote
-			for (n = 0; n < articles.length; n++) {
-				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
-				articles[n].firstChild.setAttribute("src", "/media_big/" + current_src)
-			}
-		} //Als NIET kleiner dan het breakpoint
-		else {
-			//Verander alle src images naar de goede grote
-			for (n = 0; n < articles.length; n++) {
-				current_src = articles[n].firstChild.getAttribute("src").slice(11, articles[n].firstChild.getAttribute("src").length)
-				articles[n].firstChild.setAttribute("src", "/media_nor/" + current_src)
-			}
-		}
-		 //helper variable voor groter/kleiner worden
-	}
-})
